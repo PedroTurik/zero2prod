@@ -1,6 +1,6 @@
-fn main() {
-    println!("Hello, world!");
+use zero2prod::run;
 
-    let a = 10;
-    a = "hey";
+#[tokio::main]
+async fn main() -> std::io::Result<()> {
+    run()?.await
 }
