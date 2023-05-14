@@ -1,9 +1,10 @@
 use actix_web::{HttpResponse, web};
 
+#[allow(dead_code)]
 #[derive(serde::Deserialize)]
 pub struct FormData {
-    _email: String,
-    _name: String
+    email: String,
+    name: String
 }
 
 
