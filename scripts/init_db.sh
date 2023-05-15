@@ -21,8 +21,9 @@ DB_PASSWORD="${POSTGRES_PASSWORD:=password}"
 DB_NAME="${POSTGRES_DB:=newsletter}"
 DB_PORT="${POSTGRES_PORT:=5432}"
 
-if [[-z "${SKIP_DOCKER}"]] 
+if [[ -z "${SKIP_DOCKER}" ]] 
 then
+    echo "ITS HEEERRE"
     docker run \
         -e POSTGRES_USER=${DB_USER} \
         -e POSTGRES_PASSWORD=${DB_PASSWORD} \
@@ -42,6 +43,8 @@ done
 >&2 echo "Postgres is up and running on port ${DB_PORT}!"
 
 export DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}
+
+exec fish
 
 sqlx database create
 
